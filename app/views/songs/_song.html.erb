@@ -1,0 +1,45 @@
+<li class="all-song mb-3">
+  <div class="row col-12">
+    <div class="col-md-3">
+      <%= link_to song do %>
+        <div class="song-img">
+          <% if song.img_url.url %>
+            <%= image_tag song.img_url.url, width: 150 %>
+          <% else %>
+            <%= image_tag "play.png", width: 150 %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-9">
+      <div class="row col-12">
+        <p class="song-title text-white">
+          <%= link_to song.title, song %>
+        </p>
+        <% if song.singer %>
+          <p class="space"></p>
+          <p class="song-title text-white">-</p>
+          <p class="space"></p>
+          <p class="song-title text-white">
+          <%= song.name %> - <%= check_buy song %>
+        <% end %>
+        </p>
+      </div>
+
+      <p class="song-date text-white">
+        <%= t "songs.post_at" %>
+        <%= l song.created_at %>
+      </p>
+
+      <p class="song-view text-white">
+        <%= t "songs.view" %>
+        <%= song.view %>
+      </p>
+      <% if current_user&.admin?  %>
+        <%= link_to t(".edit"), edit_song_path(song), class: "btn btn-info" %>
+        <%= link_to t(".delete"), song_path(song), class: "btn btn-danger",
+          method: :delete, data: {confirm: t(".confirm")} %>
+      <% end %>
+    </div>
+  </div>
+</li>

@@ -1,0 +1,20 @@
+<div class="row justify-content-center">
+  <div class="col-md-6 pt-5">
+    <center><h3 class="text-white">Thông tin người dùng</h3></center>
+    <div class="modal-body">
+        <div class="field text-white">
+          <label>Email:</label>
+          <%= text_field_tag :email, current_user.email, class: "form-control", disabled: true%>
+        </div>
+        <div class="field text-white">
+          <label>Name:</label>
+          <%= text_field_tag :name, current_user.name, class: "form-control", disabled: true%>
+        </div>
+        <% if current_user.admin? %>
+          <div class="actions">
+            <%= link_to "Đổi mật khẩu", edit_user_path(current_user), class: "btn btn-primary" %>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>

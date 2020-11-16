@@ -1,0 +1,54 @@
+<div class="row">
+  <section class="col-md-9">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <%= link_to image_tag("vntl.jpg", class: "w-100"), "#" %>
+        </div>
+        <div class="carousel-item">
+          <%= link_to image_tag("vntl.jpg", class: "w-100"), "#" %>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only"><%= t ".pre" %></span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only"><%= t ".next" %></span>
+      </a>
+    </div>
+  </section>
+  <aside class="col-md-3 hot-music">
+    <div class="just-for-u">
+      <h5 class="title"><%= t ".for_you" %></h5>
+      <%= render "shared/recommend_form" %>
+    </div>
+  </aside>
+</div>
+
+<div class="row mt-4">
+  <div class="col-md-9">
+    <h3 class="text-white">Bảng xếp hạng</h3>
+  </div>
+  <div class="col-md-3">
+    <h3 class="text-white"><%= t ".bxh" %></h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-9 list-genres">
+    <ul><%= render partial: "songs/song", collection: @top_songs, as: :song %></ul>
+  </div>
+  <aside class="col-md-3 hot-music">
+    <%= link_to image_tag("hot-music.jpg", alt: (t ".hot_music"), height: 100, width: 260), @feed_items.present? ? song_path(@feed_items.first) : "#", class: "pb-3 asb" %>
+    <%= link_to image_tag("love-music.jpg", alt: (t ".hot-music"), height: 100, width: 260), @feed_items.present? ? song_path(@feed_items.first) : "#", class: "pb-3 asb" %>
+    <%= link_to image_tag("vpop-music.jpg", alt: (t ".hot-music"), height: 100, width: 260), @feed_items.present? ? song_path(@feed_items.first) : "#", class: "pb-3 asb" %>
+    <%= link_to image_tag("acoustic-music.jpg", alt: (t ".hot-music"), height: 100, width: 260), @feed_items.present? ? song_path(@feed_items.first) : "#", class: "pb-3 asb" %>
+  </aside>
+</div>
